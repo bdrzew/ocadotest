@@ -27,8 +27,6 @@ public abstract class AbstractPage {
             driver.navigate().to(url);
         }
         PageFactory.initElements(new DefaultElementLocatorFactory(driver), this);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
     }
 
     public <G extends AbstractPage, T extends AbstractAssertions<G>> T check(Class<T> clazz) throws RuntimeException {
