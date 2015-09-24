@@ -13,7 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractPage {
-    private static final int LOAD_TIMEOUT = 10;
+    private static final int PAGE_LOAD_TIMEOUT = 10000;
+    private static final int WAIT_TIMEOUT = 10;
     protected WebDriver driver;
 
     public AbstractPage(WebDriver driver) {
@@ -42,11 +43,11 @@ public abstract class AbstractPage {
 
     protected void waitForPageToLoad() {
         WaitForPageToLoad wait = new WaitForPageToLoad();
-        wait.apply(driver, new String[]{String.valueOf(LOAD_TIMEOUT)});
+        wait.apply(driver, new String[]{String.valueOf(PAGE_LOAD_TIMEOUT)});
     }
 
     protected void waitUntil(ExpectedCondition<?> expectedCondition) {
-        new WebDriverWait(driver, LOAD_TIMEOUT).until(expectedCondition);
+        new WebDriverWait(driver, WAIT_TIMEOUT).until(expectedCondition);
     }
 
 
